@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+   <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+
+    <!-- Required meta tags-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Your app title -->
+    <title>Vibration massage</title>
+
+    <!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
+        http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
+     -->
+
+    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
+
+    <link rel="stylesheet" href="css/styles.css">
+	
+	 <script type="text/javascript" src="js/jquery.js"></script>
+	
+	 <script type="text/javascript" src="js/function.js"></script>
+	 
+	 <style>
+		.onoffswitch {
+			position: relative; width: 200px;
+			margin: auto;
+			-webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+		}
+		.onoffswitch-checkbox {
+			display: none;
+		}
+		.onoffswitch-label {
+			display: block; overflow: hidden; cursor: pointer;
+			border: 2px solid #999999; border-radius: 50px;
+		}
+		.onoffswitch-inner {
+			display: block; width: 200%; margin-left: -100%;
+			transition: margin 0.3s ease-in 0s;
+		}
+		.onoffswitch-inner:before, .onoffswitch-inner:after {
+			display: block; float: left; width: 50%; height: 75px; padding: 0; line-height: 75px;
+			font-size: 40px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+			box-sizing: border-box;
+		}
+		.onoffswitch-inner:before {
+			content: "ON";
+			padding-left: 48px;
+			background-color: #41BBD9; color: #FFFFFF;
+		}
+		.onoffswitch-inner:after {
+			content: "OFF";
+			padding-right: 48px;
+			background-color: #EEEEEE; color: #999999;
+			text-align: right;
+		}
+		.onoffswitch-switch {
+			display: block; width: 39px; margin: 18px;
+			background: #FFFFFF;
+			position: absolute; top: 0; bottom: 0;
+			right: 121px;
+			border: 2px solid #999999; border-radius: 50px;
+			transition: all 0.3s ease-in 0s; 
+		}
+		.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+			margin-left: 0;
+		}
+		.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+			right: 0px; 
+		}
+		
+		
+		.onoffswitch2 {
+    position: relative; width: 300px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+	margin: auto;
+		}
+		.onoffswitch-checkbox2 {
+			 display: none;
+		}
+		.onoffswitch-label2 {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 50px;
+		}
+		.onoffswitch-inner2 {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+		}
+		.onoffswitch-inner2:before, .onoffswitch-inner2:after {
+    display: block; float: left; width: 50%; height: 75px; padding: 0; line-height: 75px;
+    font-size: 25px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+		}
+		.onoffswitch-inner2:before {
+    content: "Background On";
+    padding-left: 35px;
+    background-color: #34A7C1; color: #FFFFFF;
+		}
+		.onoffswitch-inner2:after {
+    content: "Background Off";
+    padding-right: 35px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+		}
+		.onoffswitch-switch2 {
+    display: block; width: 40px; margin: 17.5px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 221px;
+    border: 2px solid #999999; border-radius: 50px;
+    transition: all 0.3s ease-in 0s; 
+		}
+		.onoffswitch-checkbox2:checked + .onoffswitch-label2 .onoffswitch-inner2 {
+			margin-left: 0;
+		}
+		.onoffswitch-checkbox2:checked + .onoffswitch-label2 .onoffswitch-switch2 {
+			right: 0px; 
+		}
+		
+		
+		.vibrateImg{
+		
+		}
+		
+      div.pinch-zoom,
+        div.pinch-zoom img{
+            width: 100%;
+            -webkit-user-drag: none;
+        }
+
+
+	 </style>
+</head>
+
+<body>
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal">
+        <div class="content-block otherApp">
+            <p>Other Apps</p>
+        </div>
+    </div>
+
+    <!-- Views -->
+    <div class="views">
+        <!-- Your main view, should have "view-main" class -->
+        <div class="view view-main">
+            <!-- Top Navbar-->
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
+                    <div class="center sliding">MTR</div>
+                    <div class="right">
+                        <!--
+                          Right link contains only icon - additional "icon-only" class
+                          Additional "open-panel" class tells app to open panel when we click on this link
+                        -->
+                        <a href="#" class="link icon-only open-panel"><i class="icon icon-bars"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+            <div class="pages navbar-through toolbar-through">
+                <!-- Page, "data-page" contains page name -->
+                <div data-page="index" class="page">
+                    <!-- Scrollable page content -->
+                    <div class="page-content">
+                        <div class="content-block">
+							<div class="pinch-zoom">
+								<img id="img1" src="routemap.png"/>
+							</div>
+			
+							<br/>
+						<!--	<div class="onoffswitch">
+								<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
+								<label class="onoffswitch-label" for="myonoffswitch">
+									<span class="onoffswitch-inner"></span>
+									<span class="onoffswitch-switch"></span>
+								</label>
+							</div>
+							<br/>
+
+							<div class="onoffswitch2">
+								
+								<input type="checkbox" name="onoffswitch2" class="onoffswitch-checkbox2" id="myonoffswitch2">
+								<label class="onoffswitch-label2" for="myonoffswitch2">
+									<span class="onoffswitch-inner2"></span>
+									<span class="onoffswitch-switch2"></span>
+								</label>
+							</div>
+							-->
+                            <!-- Link to another page -->
+                           <!-- <a href="about.html">About app</a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bottom Toolbar-->
+            <!--<div class="toolbar">
+                <div class="toolbar-inner">
+              
+                    <a href="#" class="link">Link 1</a>
+                    <a href="#" class="link">Link 2</a>
+                </div>
+            </div>
+			-->
+        </div>
+    </div>
+
+	<script>
+		var IntervalVibrate = "";
+	</script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="lib/framework7/js/framework7.min.js"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
+	
+<script type="text/javascript" src="js/pinchzoom.js"></script>
+
+	<script>
+
+
+
+
+	$(function(){
+            $('div.pinch-zoom').each(function () {
+                new RTP.PinchZoom($(this), {});
+            });
+		$(".onoffswitch-label").bind("click",function(){
+			if($(".onoffswitch-checkbox").is(':checked')=== true){
+				navigator.vibrate([]);
+				window.clearInterval(IntervalVibrate);
+				navigator.vibrate([]);
+				IntervalVibrate="";
+				if(Math.floor(Math.random() * 2) + 1 == 1 ){
+					window.admob.requestInterstitialAd();
+				}
+			}else{
+				navigator.vibrate([1000, 1000, 3000, 1000, 5000]); 
+				if(IntervalVibrate==""){
+					IntervalVibrate = window.setInterval(function(){ 	
+						navigator.vibrate([1000, 1000, 3000, 1000, 5000]); 
+					},11000);	
+				}
+			}
+		})
+		
+		$(".onoffswitch-label2").bind("click",function(){
+			if(Math.floor(Math.random() * 3) + 1 == 1 ){
+				window.admob.requestInterstitialAd();
+			}
+		})
+		
+		
+		$(".otherApp").bind("click",function(e){
+			e.preventDefault();
+			//alert(1);
+			var target = "_system";
+			var options = "location=yes";
+			var url = "https://play.google.com/store/apps/developer?id=Sky+Explorer";
+			window.open(url, target, options);
+			
+		})
+	})
+	
+	</script>
+</body>
+
+</html>
