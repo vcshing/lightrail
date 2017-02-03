@@ -10,7 +10,7 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+  <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
 
     <!-- Required meta tags-->
     <meta charset="utf-8">
@@ -37,7 +37,13 @@
 	 <script type="text/javascript" src="js/function.js"></script>
 	 
 	 <style>
-	
+body.views
+{
+    position: fixed; 
+    overflow-y: scroll;
+    width: 100%;
+}
+
             div.pinch-zoom,
         div.pinch-zoom img{
             width: 100%;
@@ -91,45 +97,18 @@
                 <div data-page="index" class="page">
                     <!-- Scrollable page content -->
                     <div class="page-content">
-                        <div class="content-block">
+                       
 							<div class="pinch-zoom">
 								<img id="img1" src="routemap.png"/>
 							</div>
 			
-							<br/>
-						<!--	<div class="onoffswitch">
-								<input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
-								<label class="onoffswitch-label" for="myonoffswitch">
-									<span class="onoffswitch-inner"></span>
-									<span class="onoffswitch-switch"></span>
-								</label>
-							</div>
-							<br/>
-
-							<div class="onoffswitch2">
-								
-								<input type="checkbox" name="onoffswitch2" class="onoffswitch-checkbox2" id="myonoffswitch2">
-								<label class="onoffswitch-label2" for="myonoffswitch2">
-									<span class="onoffswitch-inner2"></span>
-									<span class="onoffswitch-switch2"></span>
-								</label>
-							</div>
-							-->
-                            <!-- Link to another page -->
-                           <!-- <a href="about.html">About app</a>-->
-                        </div>
+						
+				
+                    
                     </div>
                 </div>
             </div>
-            <!-- Bottom Toolbar-->
-            <!--<div class="toolbar">
-                <div class="toolbar-inner">
-              
-                    <a href="#" class="link">Link 1</a>
-                    <a href="#" class="link">Link 2</a>
-                </div>
-            </div>
-			-->
+   
         </div>
     </div>
 
