@@ -23,5 +23,6 @@
     <allow-intent href="geo:*" />
     <icon src="icon.png" />
     <preference name="DisallowOverscroll" value="true" />
+    <preference name="orientation" value="landscape" />
     <preference name="fullscreen" value="true" />
 </widget>
