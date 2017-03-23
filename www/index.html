@@ -21,7 +21,7 @@
     <meta name="msapplication-tap-highlight" content="no">
 
     <!-- Your app title -->
-    <title>Vibration massage</title>
+    <title>MTR Light Rail</title>
 
     <!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
         http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
@@ -71,6 +71,9 @@ body.views
         <div class="content-block otherApp">
             <p>Other Apps</p>
         </div>
+		<div class="content-block shareApp">
+			<p>Share App</p>
+		</div>
     </div>
 
     <!-- Views -->
@@ -81,7 +84,7 @@ body.views
             <div class="navbar">
                 <div class="navbar-inner">
                     <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-                    <div class="center sliding">MTR</div>
+                    <div class="center sliding">MTR Light Rail</div>
                     <div class="right">
                         <!--
                           Right link contains only icon - additional "icon-only" class
@@ -177,6 +180,10 @@ body.views
 			var url = "https://play.google.com/store/apps/developer?id=Sky+Explorer";
 			window.open(url, target, options);
 			
+		})
+		
+		$(".shareApp").bind("click",function(e){
+			window.plugins.socialsharing.share("MTR Map", "Good", "", "https://play.google.com/store/apps/details?id=com.skyexplorer.mtr");
 		})
 	})
 	
