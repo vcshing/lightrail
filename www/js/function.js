@@ -10,3 +10,8 @@ Url = {
         return vars;
     }
 };
+function randomEvent(pool, callback) {
+  if (Math.floor(Math.random() * pool) + 1 == 1) {
+    callback();
+  }
+}
